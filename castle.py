@@ -66,23 +66,51 @@ def drawFence(xPos,zPos):
         	mc.setBlock(xPos+30,y,n,block.FENCE)
         	mc.setBlock(xPos+30,y+1,n,block.FENCE)
 
+# Draw a moat around the outside
 def drawMoat(x,y,z):
-	mc.setBlocks(x,y-1,z,x+32,y+2,z,block.AIR)
-	mc.setBlocks(x,y-1,z+32,x+32,y+1,z+32,block.AIR)
 
-	mc.setBlocks(x,y-1,z,x,y+2,z+32,block.AIR)
-	mc.setBlocks(x+32,y-1,z,x+32,y+2,z+32,block.AIR)
+	#medium = block.WATER
+	medium = block.GOLD_BLOCK
+
+	mc.setBlocks(x,y-1,z,x+32,y-2,z-1,medium)
+	mc.setBlocks(x,y-1,z+32,x+32,y-2,z+33,medium)
+
+	mc.setBlocks(x,y-1,z,x-1,y-2,z+32,medium)
+	#mc.setBlocks(x+32,y-1,z,x+32,y-2,z+32,medium)
 
 def drawFoundations(x,y,z):
-	mc.setBlocks(x,y,z,x+33,y-10,z+33,block.MOSS_STONE)
-	mc.setBlocks(x,y,z,x+33,y+10,z+33,block.AIR)
+
+	# Draw a huge block of stone and clear a huge block or air above it
+
+	mc.setBlocks(x-2,y,z-2,x+33,y-10,z+35,block.MOSS_STONE)
+	mc.setBlocks(x-2,y,z-2,x+33,y+10,z+35,block.AIR)
+
+	# Hoolow out the block to make a huge dungeaon
 	mc.setBlocks(x+1,y-3,z+1,x+32,y-9,z+32,block.AIR)
-	mc.setBlock(x+10,y,z+10,block.AIR)
-	
+
+	# TODO : what is this? And a hole to get into the cave - 
+	# mc.setBlock(x+10,y,z+10,block.AIR)
+
+def drawFoundationsEx(x,y,z):
+
+	# Draw a huge block of stone and clear a huge block or air above it
+	mc.setBlocks(x,y,z,x+37,y-10,z+37,block.MOSS_STONE)
+	mc.setBlocks(x,y+1,z,x+37,y+10,z+37,block.AIR)
+
+	# Clear a space that will become the moat
+	mc.setBlocks(x+1,y-1,z+1,x+36,y,z+36,block.WATER)
+	#mc.setBlocks(x+2,y-2,z+2,x+36,y-1,z+36,block.AIR)
+
+	# And raise a platform for the castle
+	mc.setBlocks(x+3,y,z+3,x+34,y-1,z+34,block.MOSS_STONE)
+
+	# Hollow out the block to make a huge dungeaon
+	mc.setBlocks(x+1,y-3,z+1,x+32,y-9,z+32,block.AIR)
+
 mc = minecraft.Minecraft.create()
 xPos,yPos,zPos = mc.player.getTilePos()
 
-drawFoundations(xPos-4,yPos,zPos-4)
+drawFoundationsEx(xPos-4,yPos,zPos-4)
 drawFence(xPos-3,zPos-3)
-drawCastle(xPos+2,yPos,zPos)
-drawMoat(xPos-4,yPos,zPos-4)
+#drawCastle(xPos+2,yPos,zPos)
+#drawMoat(xPos-4,yPos,zPos-4)
