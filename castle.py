@@ -2,11 +2,14 @@ from mcpi import minecraft
 import mcpi.block as block 
 import time
 
+# Draw a corner tower
 def drawTower(x,y,z):
 
+	# Draw a block and hollow it out
         mc.setBlocks(x,y,z,x+6,y+10,z+6, block.STONE_BRICK)
         mc.setBlocks(x+1,y,z+1,x+5,y+9,z+5, block.AIR)
 
+	# Then add the castelations on the top.
         for n in range(0,7,2):
            	mc.setBlock(x+n,y+11,z,block.STONE_BRICK)
                 mc.setBlock(x+n,y+11,z+6,block.STONE_BRICK)
