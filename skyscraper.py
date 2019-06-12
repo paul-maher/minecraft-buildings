@@ -103,15 +103,15 @@ mc = minecraft.Minecraft.create()
 xPos,yPos,zPos = mc.player.getTilePos()
 
 # Draw a house near me
-drawSkyscraper(xPos+2, yPos, zPos+1, 8, 8, block.IRON_BLOCK, block.SANDSTONE, 8)
+#drawSkyscraper(xPos+2, yPos, zPos+1, 8, 8, block.IRON_BLOCK, block.SANDSTONE, 6)
 
 #draw a road near me
 #drawARoad(1,30,3)
 #drawARoad(2,30,3)
-#drawARoad(3,30,3)
+drawARoad(3,30,3)
 #drawARoad(4,30,3)
 
 # this is TNT that explodes when you hit it
-#mc.setBlock(xPos,yPos,zPos,block.TNT.0)
+#mc.setBlock(xPos,yPos,zPos,block.TNT,0)
 
 
